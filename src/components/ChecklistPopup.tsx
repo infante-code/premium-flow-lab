@@ -78,12 +78,12 @@ export function ChecklistPopup() {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Overlay */}
       <div 
-        className="absolute inset-0 bg-primary-dark/55 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-background/80 backdrop-blur-sm animate-fade-in"
         onClick={handleClose}
       />
 
       {/* Modal */}
-      <div className="relative w-full max-w-lg bg-card rounded-3xl shadow-2xl overflow-hidden animate-scale-fade-in">
+      <div className="relative w-full max-w-lg bg-card rounded-3xl shadow-2xl border border-border overflow-hidden animate-scale-fade-in">
         {/* Close Button */}
         <button
           onClick={handleClose}
@@ -110,65 +110,69 @@ export function ChecklistPopup() {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="firstName">First Name</Label>
+              <Label htmlFor="popupFirstName">First Name</Label>
               <Input
-                id="firstName"
+                id="popupFirstName"
                 placeholder="John"
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 required
+                className="bg-secondary/50"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="lastName">Last Name</Label>
+              <Label htmlFor="popupLastName">Last Name</Label>
               <Input
-                id="lastName"
+                id="popupLastName"
                 placeholder="Doe"
                 value={formData.lastName}
                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 required
+                className="bg-secondary/50"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="popupPhone">Phone</Label>
             <Input
-              id="phone"
+              id="popupPhone"
               type="tel"
               placeholder="(555) 123-4567"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
+              className="bg-secondary/50"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="popupEmail">Email</Label>
             <Input
-              id="email"
+              id="popupEmail"
               type="email"
               placeholder="john@example.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
+              className="bg-secondary/50"
             />
           </div>
 
           <div className="space-y-2">
-            <Label>Do you own HighLevel?</Label>
+            <Label>Do you own GoHighLevel?</Label>
             <div className="flex gap-4">
               {["Yes", "No"].map((option) => (
                 <label key={option} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
-                    name="ownsHighLevel"
+                    name="popupOwnsHighLevel"
                     value={option}
                     checked={formData.ownsHighLevel === option}
                     onChange={(e) => setFormData({ ...formData, ownsHighLevel: e.target.value })}
-                    className="w-4 h-4 text-primary focus:ring-primary"
+                    className="w-4 h-4 text-primary focus:ring-primary accent-primary"
                   />
-                  <span className="text-sm">{option}</span>
+                  <span className="text-sm text-foreground">{option}</span>
                 </label>
               ))}
             </div>
@@ -180,7 +184,7 @@ export function ChecklistPopup() {
           </div>
 
           <div className="space-y-2">
-            <Label>What package do you have in mind?</Label>
+            <Label>What package interests you?</Label>
             <div className="space-y-2">
               {[
                 { value: "build-it", label: "Build It (Most Popular)" },
@@ -190,13 +194,13 @@ export function ChecklistPopup() {
                 <label key={option.value} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
-                    name="packageInterest"
+                    name="popupPackageInterest"
                     value={option.value}
                     checked={formData.packageInterest === option.value}
                     onChange={(e) => setFormData({ ...formData, packageInterest: e.target.value })}
-                    className="w-4 h-4 text-primary focus:ring-primary"
+                    className="w-4 h-4 text-primary focus:ring-primary accent-primary"
                   />
-                  <span className="text-sm">{option.label}</span>
+                  <span className="text-sm text-foreground">{option.label}</span>
                 </label>
               ))}
             </div>

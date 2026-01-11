@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const plans = [
   {
@@ -15,31 +16,33 @@ const plans = [
       "Free High-Converting Landing Page Checklist",
     ],
     cta: "Get Started",
+    ctaLink: "/contact",
     popular: false,
   },
   {
     name: "Build It",
     price: "$1,299",
-    period: "/ month",
+    period: "/month",
     description: "Our most popular plan for serious growth",
     features: [
-      "Sub-account inside Agency GoHighLevel",
+      "Sub-account Inside Agency GoHighLevel",
       "Private Slack Communication Channel",
       "Full Pipeline Setup",
       "Pipeline Automations & Integrations",
-      "A2P Registration + US / CA / PR Phone Number",
+      "A2P Registration + US/CA/PR Phone Number",
       "High-Converting Squeeze Page Funnel",
       "In-house Funnel Templates",
       "Dedicated CRM Support",
       "Free High-Converting Landing Page Checklist",
     ],
-    cta: "Build My System",
+    cta: "Apply to Work with Us",
+    ctaLink: "/contact",
     popular: true,
   },
   {
     name: "Full Lead Generation",
     price: "$3,000",
-    period: "/ month",
+    period: "/month",
     description: "Complete done-for-you marketing solution",
     features: [
       "AI Website Redesign",
@@ -47,14 +50,15 @@ const plans = [
       "Meta Ads Management & Optimization",
       "Everything in Build It",
     ],
-    cta: "Apply to Work With Us",
+    cta: "Apply to Work with Us",
+    ctaLink: "/contact",
     popular: false,
   },
 ];
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-24 bg-background">
+    <section id="pricing" className="py-24 section-overlay">
       <div className="container-wide">
         {/* Header */}
         <div className="text-center mb-16">
@@ -65,7 +69,7 @@ export function PricingSection() {
             Pricing Plans
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect plan to scale your business with our proven marketing systems.
+            Choose the perfect plan to scale your business with our proven marketing systems
           </p>
         </div>
 
@@ -76,14 +80,14 @@ export function PricingSection() {
               key={i}
               className={`relative rounded-3xl p-8 transition-all duration-300 ${
                 plan.popular
-                  ? "bg-card border-2 border-primary shadow-glow scale-105 lg:scale-110"
-                  : "bg-card border border-border shadow-lg hover:shadow-xl hover:border-primary/30"
+                  ? "bg-card border-2 border-primary shadow-glow scale-100 lg:scale-105"
+                  : "bg-card/60 backdrop-blur-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30"
               }`}
             >
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-bold shadow-lg animate-pulse-glow">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-bold shadow-lg">
                     MOST POPULAR
                   </span>
                 </div>
@@ -120,8 +124,9 @@ export function PricingSection() {
                 variant={plan.popular ? "cta" : "outline"}
                 size="lg"
                 className="w-full"
+                asChild
               >
-                {plan.cta}
+                <Link to={plan.ctaLink}>{plan.cta}</Link>
               </Button>
             </div>
           ))}

@@ -1,79 +1,77 @@
-import { AlertTriangle, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Bot, Cog, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const problems = [
-  "Your website isn't generating leads",
-  "Manual follow-ups are costing you deals",
-  "Paid ads aren't converting",
-  "No clear marketing system in place",
-];
-
-const solutions = [
-  "AI-powered websites that convert visitors into leads",
-  "Automated CRM that nurtures leads 24/7",
-  "Data-driven ad campaigns with real ROI",
-  "Complete marketing systems built for scale",
+const features = [
+  {
+    icon: Bot,
+    title: "Automated Lead Capture",
+    description: "Never miss a lead with 24/7 automated systems that capture, qualify, and nurture prospects.",
+  },
+  {
+    icon: Cog,
+    title: "Smart CRM Automation",
+    description: "Follow-up sequences, pipeline management, and customer tracking all on autopilot.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Revenue Optimization",
+    description: "Data-driven insights and continuous optimization to maximize your ROI and close rates.",
+  },
 ];
 
 export function ProblemSolutionSection() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 section-overlay">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-            The Problem With Most Marketing
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-foreground">Transform Your Business with</span>
+            <br />
+            <span className="text-gradient">Lead Generation + CRM</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            You're spending money on marketing, but you're not seeing results. Sound familiar?
+            Our proven systems combine powerful lead generation strategies with intelligent CRM automation to maximize your revenue growth.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Problems */}
-          <div className="card-premium p-8 lg:p-10 bg-gradient-to-br from-destructive/5 to-transparent">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
-                <AlertTriangle className="w-6 h-6 text-destructive" />
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {features.map((feature, i) => (
+            <div
+              key={i}
+              className="card-premium p-8 text-center group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
+                <feature.icon className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground">Without a System</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
             </div>
-            <ul className="space-y-4">
-              {problems.map((problem, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="w-2 h-2 bg-destructive rounded-full" />
-                  </span>
-                  <span className="text-muted-foreground">{problem}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Solutions */}
-          <div className="card-premium p-8 lg:p-10 bg-gradient-to-br from-primary/5 to-transparent border-primary/20">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">With Our System</h3>
-            </div>
-            <ul className="space-y-4">
-              {solutions.map((solution, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                  </span>
-                  <span className="text-foreground">{solution}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          ))}
         </div>
 
-        {/* Arrow Transition */}
-        <div className="flex justify-center mt-12">
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary font-medium">
-            <span>Ready to transform your marketing?</span>
-            <ArrowRight className="w-4 h-4" />
+        {/* Revenue Stats */}
+        <div className="card-premium p-8 md:p-12 bg-gradient-to-r from-primary/5 via-transparent to-primary/5">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-2">Revenue Growth Trajectory</h3>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">2-3X</div>
+              <div className="text-muted-foreground">Lead Growth</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">50-100%</div>
+              <div className="text-muted-foreground">Revenue Increase</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">90 Days</div>
+              <div className="text-muted-foreground">To Results</div>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <Button variant="default" size="lg" asChild>
+              <a href="#services">See How It Works</a>
+            </Button>
           </div>
         </div>
       </div>
