@@ -1,17 +1,17 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
   services: [
-    { label: "AI Websites", href: "#services" },
-    { label: "Funnels", href: "#services" },
-    { label: "CRM & Automation", href: "#services" },
-    { label: "Lead Generation", href: "#services" },
+    { label: "CRM & Automation", href: "/#services" },
+    { label: "Lead Generation", href: "/#services" },
+    { label: "Optimization", href: "/#services" },
+    { label: "Consultation", href: "/#services" },
   ],
   company: [
-    { label: "About Us", href: "#" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Case Studies", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "About", href: "/about" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Contact", href: "/contact" },
   ],
   legal: [
     { label: "Privacy Policy", href: "#" },
@@ -21,26 +21,26 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-primary-foreground py-16">
+    <footer className="relative z-10 border-t border-border/50 py-16">
       <div className="container-wide">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-glow">
                 <span className="text-primary-foreground font-bold text-xl">M</span>
               </div>
-              <span className="font-bold text-xl">MDF Agency</span>
-            </div>
-            <p className="text-primary-foreground/70 text-sm mb-6 leading-relaxed">
+              <span className="font-bold text-xl text-foreground">MDF</span>
+            </Link>
+            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
               Building high-converting marketing systems that generate qualified leads on autopilot.
             </p>
             <div className="space-y-3">
-              <a href="mailto:hello@mdfagency.com" className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary transition-colors">
+              <a href="mailto:hello@mdfagency.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
                 hello@mdfagency.com
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary transition-colors">
+              <a href="tel:+1234567890" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
                 (123) 456-7890
               </a>
@@ -49,11 +49,11 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <h4 className="font-semibold text-foreground mb-4">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-sm text-primary-foreground/70 hover:text-primary transition-colors">
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -63,13 +63,13 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold text-foreground mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-sm text-primary-foreground/70 hover:text-primary transition-colors">
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -77,15 +77,15 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-semibold mb-4">Stay Updated</h4>
-            <p className="text-sm text-primary-foreground/70 mb-4">
+            <h4 className="font-semibold text-foreground mb-4">Stay Updated</h4>
+            <p className="text-sm text-muted-foreground mb-4">
               Get marketing tips and insights delivered to your inbox.
             </p>
             <form className="flex gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-sm focus:outline-none focus:border-primary"
+                className="flex-1 px-4 py-2 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
               <button
                 type="submit"
@@ -98,13 +98,13 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-primary-foreground/50">
+        <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} MDF Agency. All rights reserved.
           </p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link, i) => (
-              <a key={i} href={link.href} className="text-sm text-primary-foreground/50 hover:text-primary transition-colors">
+              <a key={i} href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {link.label}
               </a>
             ))}
