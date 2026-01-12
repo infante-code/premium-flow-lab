@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
 import { Button } from "@/components/ui/button";
 import { Users, Target, Award, TrendingUp, CheckCircle2, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -187,10 +188,12 @@ export default function About() {
                   Get in Touch
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
+            </Button>
             </div>
           </div>
         </section>
+
+        <GoHighLevelAffiliate />
       </main>
 
       <Footer />
