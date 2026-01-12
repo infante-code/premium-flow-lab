@@ -6,7 +6,6 @@ const footerLinks = {
     { label: "CRM & Automation", href: "/#services" },
     { label: "Lead Generation", href: "/#services" },
     { label: "Optimization", href: "/#services" },
-    { label: "Consultation", href: "/#services" },
   ],
   company: [
     { label: "About", href: "/about" },
