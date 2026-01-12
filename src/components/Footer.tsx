@@ -1,5 +1,6 @@
 import { Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   services: [
@@ -25,11 +26,12 @@ export function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-glow">
-                <span className="text-primary-foreground font-bold text-xl">M</span>
-              </div>
-              <span className="font-bold text-xl text-foreground">MDF</span>
+            <Link to="/" className="flex items-center mb-4">
+              <img 
+                src={logo} 
+                alt="MDF Agency" 
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
               Building high-converting marketing systems that generate qualified leads on autopilot.

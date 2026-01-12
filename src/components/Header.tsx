@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -42,13 +43,12 @@ export function Header() {
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-glow transition-all duration-300 group-hover:shadow-glow-lg">
-            <span className="text-primary-foreground font-bold text-xl">M</span>
-          </div>
-          <span className="font-bold text-xl text-foreground">
-            MDF
-          </span>
+        <Link to="/" className="flex items-center group">
+          <img 
+            src={logo} 
+            alt="MDF Agency" 
+            className="h-10 w-auto transition-all duration-300 group-hover:opacity-80"
+          />
         </Link>
 
         {/* Desktop Navigation */}
