@@ -11,7 +11,7 @@ const plans = [
     features: [
       "AI Website Redesign",
       "30 Days Free CRM Sub-account",
-      "Build It Snapshot",
+      "Fully Built Snapshot",
       "Free High-Converting Landing Page Checklist",
     ],
     cta: "Get Started",
