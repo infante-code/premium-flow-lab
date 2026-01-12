@@ -3,19 +3,14 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const footerLinks = {
-  services: [
-    { label: "CRM & Automation", href: "/#services" },
-    { label: "Lead Generation", href: "/#services" },
-    { label: "Optimization", href: "/#services" },
-  ],
   company: [
     { label: "About", href: "/about" },
     { label: "Pricing", href: "/#pricing" },
     { label: "Contact", href: "/contact" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
   ],
 };
 
@@ -23,7 +18,7 @@ export function Footer() {
   return (
     <footer className="relative z-10 border-t border-border/50 py-16">
       <div className="container-wide">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center mb-4">
@@ -48,15 +43,15 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Company */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Services</h4>
+            <h4 className="font-semibold text-foreground mb-4">Company</h4>
             <ul className="space-y-3">
-              {footerLinks.services.map((link, i) => (
+              {footerLinks.company.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -105,9 +100,9 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link, i) => (
-              <a key={i} href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link key={i} to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

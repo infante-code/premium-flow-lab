@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { PricingSection } from "@/components/PricingSection";
 import { FAQSection } from "@/components/FAQSection";
 import { CTASection } from "@/components/CTASection";
+import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
 import { Footer } from "@/components/Footer";
 import { ChecklistPopup } from "@/components/ChecklistPopup";
 
@@ -19,6 +20,7 @@ const Index = () => {
         <PricingSection />
         <FAQSection />
         <CTASection />
+        <GoHighLevelAffiliate />
       </main>
       <Footer />
       <ChecklistPopup />

@@ -1,10 +1,11 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -282,6 +283,8 @@ export default function Contact() {
             </div>
           </div>
         </section>
+
+        <GoHighLevelAffiliate />
       </main>
 
       <Footer />
