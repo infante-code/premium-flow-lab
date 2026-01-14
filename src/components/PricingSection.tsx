@@ -25,7 +25,7 @@ const plans = [
     description: "Our most popular plan for serious growth",
     features: [
       "Sub-account Inside Agency GoHighLevel",
-      "Private Slack Communication Channel",
+      "Private Communication Channel",
       "Full Pipeline Setup",
       "Pipeline Automations & Integrations",
       "A2P Registration + US/CA/PR Phone Number",
