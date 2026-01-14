@@ -47,24 +47,52 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const webhookUrl = "https://services.leadconnectorhq.com/hooks/qhGjNIAUgMNa6ZkPi6pi/webhook-trigger/6bb6d538-fb85-4c6c-84e4-9b05a757fb45";
     
-    toast({
-      title: "Application Submitted!",
-      description: "We'll review your application and get back to you within 24-48 hours.",
-    });
-    
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      ownsHighLevel: "",
-      packageInterest: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+    try {
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          ownsHighLevel: formData.ownsHighLevel,
+          packageInterest: formData.packageInterest,
+          message: formData.message,
+          timestamp: new Date().toISOString(),
+          source: "Contact Page",
+        }),
+      });
+      
+      toast({
+        title: "Application Submitted!",
+        description: "We'll review your application and get back to you within 24-48 hours.",
+      });
+      
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        ownsHighLevel: "",
+        packageInterest: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
