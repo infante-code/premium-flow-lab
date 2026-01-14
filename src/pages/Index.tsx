@@ -19,8 +19,8 @@ const Index = () => {
         <ServicesSection />
         <PricingSection />
         <FAQSection />
-        <CTASection />
         <GoHighLevelAffiliate />
+        <CTASection />
       </main>
       <Footer />
       <ChecklistPopup />
