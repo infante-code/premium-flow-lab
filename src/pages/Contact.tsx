@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Clock, Send } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -32,6 +33,7 @@ const contactInfo = [
 
 export default function Contact() {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -69,20 +71,12 @@ export default function Contact() {
         }),
       });
       
-      toast({
-        title: "Application Submitted!",
-        description: "We'll review your application and get back to you within 24-48 hours.",
+      // Redirect to thank you page with plan details
+      const params = new URLSearchParams({
+        plan: formData.packageInterest,
+        name: formData.firstName,
       });
-      
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        ownsHighLevel: "",
-        packageInterest: "",
-        message: "",
-      });
+      navigate(`/thank-you?${params.toString()}`);
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
