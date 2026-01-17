@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, Clock, Send } from "lucide-react";
+import { Mail, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -14,14 +14,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "hello@mdfagency.com",
-    href: "mailto:hello@mdfagency.com",
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    value: "(123) 456-7890",
-    href: "tel:+1234567890",
+    value: "multipledesignpromotions@gmail.com",
+    href: "mailto:multipledesignpromotions@gmail.com",
   },
   {
     icon: Clock,
@@ -270,7 +264,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Tell us about your business (optional)</Label>
+                      <Label htmlFor="message">Tell us about your business</Label>
                       <Textarea
                         id="message"
                         placeholder="What are your current marketing challenges? What are your growth goals?"

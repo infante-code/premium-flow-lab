@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -32,13 +32,9 @@ export function Footer() {
               Building high-converting marketing systems that generate qualified leads on autopilot.
             </p>
             <div className="space-y-3">
-              <a href="mailto:hello@mdfagency.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:multipledesignpromotions@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
-                hello@mdfagency.com
-              </a>
-              <a href="tel:+1234567890" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                <Phone className="w-4 h-4" />
-                (123) 456-7890
+                multipledesignpromotions@gmail.com
               </a>
             </div>
           </div>
