@@ -3,19 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { X, Gift } from "lucide-react";
+import { PhoneInput } from "@/components/ui/phone-input";
+import { useToast } from "@/hooks/use-toast";
 
 const POPUP_STORAGE_KEY = "checklist_popup_dismissed";
 const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
 
 export function ChecklistPopup() {
+  const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     phone: "",
     email: "",
-    ownsHighLevel: "",
-    packageInterest: "",
   });
 
   useEffect(() => {
@@ -65,11 +67,47 @@ export function ChecklistPopup() {
     localStorage.setItem(POPUP_STORAGE_KEY, Date.now().toString());
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    handleClose();
-    // Here you would typically send to your backend
+    setIsSubmitting(true);
+
+    const webhookUrl = "https://services.leadconnectorhq.com/hooks/qhGjNIAUgMNa6ZkPi6pi/webhook-trigger/6bb6d538-fb85-4c6c-84e4-9b05a757fb45";
+
+    try {
+      const formPayload = new URLSearchParams({
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone, // Already in E.164 format
+        timestamp: new Date().toISOString(),
+        source: "Free Checklist Popup",
+      });
+
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        mode: "no-cors",
+        body: formPayload.toString(),
+      });
+
+      toast({
+        title: "Success!",
+        description: "Your free checklist is on its way to your inbox!",
+      });
+
+      handleClose();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -110,7 +148,7 @@ export function ChecklistPopup() {
         <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4 overflow-y-auto flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="popupFirstName" className="text-sm">First Name</Label>
+              <Label htmlFor="popupFirstName" className="text-sm">First Name *</Label>
               <Input
                 id="popupFirstName"
                 placeholder="John"
@@ -121,7 +159,7 @@ export function ChecklistPopup() {
               />
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="popupLastName" className="text-sm">Last Name</Label>
+              <Label htmlFor="popupLastName" className="text-sm">Last Name *</Label>
               <Input
                 id="popupLastName"
                 placeholder="Doe"
@@ -134,20 +172,18 @@ export function ChecklistPopup() {
           </div>
 
           <div className="space-y-1 sm:space-y-2">
-            <Label htmlFor="popupPhone" className="text-sm">Phone</Label>
-            <Input
+            <Label htmlFor="popupPhone" className="text-sm">Phone *</Label>
+            <PhoneInput
               id="popupPhone"
-              type="tel"
-              placeholder="(555) 123-4567"
+              placeholder="Phone number"
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={(phone) => setFormData({ ...formData, phone })}
               required
-              className="bg-secondary/50 h-10 sm:h-11"
             />
           </div>
 
           <div className="space-y-1 sm:space-y-2">
-            <Label htmlFor="popupEmail" className="text-sm">Email</Label>
+            <Label htmlFor="popupEmail" className="text-sm">Email *</Label>
             <Input
               id="popupEmail"
               type="email"
@@ -159,55 +195,14 @@ export function ChecklistPopup() {
             />
           </div>
 
-          <div className="space-y-1 sm:space-y-2">
-            <Label className="text-sm">Do you own GoHighLevel?</Label>
-            <div className="flex gap-4">
-              {["Yes", "No"].map((option) => (
-                <label key={option} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="popupOwnsHighLevel"
-                    value={option}
-                    checked={formData.ownsHighLevel === option}
-                    onChange={(e) => setFormData({ ...formData, ownsHighLevel: e.target.value })}
-                    className="w-4 h-4 text-primary focus:ring-primary accent-primary"
-                  />
-                  <span className="text-sm text-foreground">{option}</span>
-                </label>
-              ))}
-            </div>
-            {formData.ownsHighLevel === "No" && (
-              <p className="text-xs text-muted-foreground mt-1">
-                No worries! We'll set you up with a sub-account.
-              </p>
-            )}
-          </div>
-
-          <div className="space-y-1 sm:space-y-2">
-            <Label className="text-sm">What package interests you?</Label>
-            <div className="space-y-1.5 sm:space-y-2">
-              {[
-                { value: "build-it", label: "Build It (Most Popular)" },
-                { value: "full-lead-gen", label: "Full Lead Generation" },
-                { value: "ofm", label: "OFM" },
-              ].map((option) => (
-                <label key={option.value} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="popupPackageInterest"
-                    value={option.value}
-                    checked={formData.packageInterest === option.value}
-                    onChange={(e) => setFormData({ ...formData, packageInterest: e.target.value })}
-                    className="w-4 h-4 text-primary focus:ring-primary accent-primary"
-                  />
-                  <span className="text-sm text-foreground">{option.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <Button type="submit" variant="cta" size="lg" className="w-full h-11 sm:h-12 text-sm sm:text-base">
-            Get the Free Checklist
+          <Button 
+            type="submit" 
+            variant="cta" 
+            size="lg" 
+            className="w-full h-11 sm:h-12 text-sm sm:text-base"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Get the Free Checklist"}
           </Button>
 
           <p className="text-xs text-center text-muted-foreground">
