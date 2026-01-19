@@ -61,16 +61,16 @@ export function HeroSection() {
           </p>
 
           {/* Stats Cards */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 animate-fade-in-up animation-delay-400">
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 mb-10 animate-fade-in-up animation-delay-400">
             {stats.map((stat, i) => (
               <div 
                 key={i}
-                className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50"
+                className="flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50"
               >
-                <stat.icon className="w-5 h-5 text-primary" />
+                <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 <div className="text-left">
-                  <div className="font-bold text-foreground">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.label}</div>
+                  <div className="font-bold text-foreground text-sm sm:text-base">{stat.value}</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground">{stat.label}</div>
                 </div>
               </div>
             ))}
@@ -78,13 +78,13 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
-            <Button variant="cta" size="lg" className="group" asChild>
+            <Button variant="cta" size="lg" className="group w-full sm:w-auto min-w-[220px]" asChild>
               <Link to="/contact">
                 Apply to Work with Us
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto min-w-[220px]" asChild>
               <a href="#services">See How It Works</a>
             </Button>
           </div>
