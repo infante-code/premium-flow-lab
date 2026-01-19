@@ -29,13 +29,13 @@ export function GoHighLevelAffiliate() {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Start Your 14 Days Free Trial
+                Start Here
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground mt-4">
-            This is an affiliate link. We may earn a commission at no extra cost to you.
+          <p className="text-sm text-muted-foreground mt-4">
+            Claim your 14 days free trial today. Cancel Anytime.
           </p>
         </div>
       </div>
