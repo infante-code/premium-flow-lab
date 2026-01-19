@@ -35,10 +35,12 @@ export function ChecklistPopup() {
       setIsOpen(true);
     }, 10000);
 
-    // Scroll trigger: 50%
+    // Scroll trigger: 30% or end of page
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercent >= 50) {
+      const isAtBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 100;
+      
+      if (scrollPercent >= 30 || isAtBottom) {
         setIsOpen(true);
         window.removeEventListener("scroll", handleScroll);
       }
