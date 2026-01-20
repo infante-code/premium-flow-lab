@@ -51,8 +51,8 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop Navigation - Centered */}
+        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             link.href.startsWith("/#") ? (
               <a
@@ -82,7 +82,7 @@ export function Header() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
           <Button variant="outline" size="default" asChild>
-            <Link to="/#pricing">View Plans</Link>
+            <a href="https://app.premiumflowlab.com/" target="_blank" rel="noopener noreferrer">Portal</a>
           </Button>
           <Button variant="default" size="default" asChild>
             <Link to="/contact">Apply Now</Link>
@@ -130,7 +130,7 @@ export function Header() {
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
               <Button variant="outline" asChild>
-                <Link to="/#pricing">View Plans</Link>
+                <a href="https://app.premiumflowlab.com/" target="_blank" rel="noopener noreferrer">Portal</a>
               </Button>
               <Button variant="default" asChild>
                 <Link to="/contact">Apply Now</Link>

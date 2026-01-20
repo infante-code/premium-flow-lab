@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.png";
 
@@ -20,6 +20,7 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,18 +54,12 @@ export function Footer() {
         body: formPayload.toString(),
       });
 
-      toast({
-        title: "Success!",
-        description: "You've been subscribed to our newsletter.",
-      });
       setEmail("");
+      navigate("/submission-thank-you");
     } catch (error) {
       console.error("Newsletter submission error:", error);
-      toast({
-        title: "Subscription successful",
-        description: "Thank you for subscribing!",
-      });
       setEmail("");
+      navigate("/submission-thank-you");
     } finally {
       setIsSubmitting(false);
     }
