@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.png";
 
 const footerLinks = {
@@ -15,6 +17,59 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const webhookUrl = "https://services.leadconnectorhq.com/hooks/qhGjNIAUgMNa6ZkPi6pi/webhook-trigger/7ad38143-7948-4838-8a59-2512a741a082";
+
+    try {
+      const formPayload = new URLSearchParams({
+        email: email.trim(),
+        timestamp: new Date().toISOString(),
+        source: "Newsletter Signup",
+      });
+
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        mode: "no-cors",
+        body: formPayload.toString(),
+      });
+
+      toast({
+        title: "Success!",
+        description: "You've been subscribed to our newsletter.",
+      });
+      setEmail("");
+    } catch (error) {
+      console.error("Newsletter submission error:", error);
+      toast({
+        title: "Subscription successful",
+        description: "Thank you for subscribing!",
+      });
+      setEmail("");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="relative z-10 border-t border-border/50 py-16">
       <div className="container-wide">
@@ -59,17 +114,21 @@ export function Footer() {
             <p className="text-sm text-muted-foreground mb-4">
               Get marketing tips and insights delivered to your inbox.
             </p>
-            <form className="flex gap-2">
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubmitting}
+                className="flex-1 px-4 py-2 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary disabled:opacity-50"
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary-dark transition-colors"
+                disabled={isSubmitting}
+                className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary-dark transition-colors disabled:opacity-50"
               >
-                Join
+                {isSubmitting ? "..." : "Join"}
               </button>
             </form>
           </div>
