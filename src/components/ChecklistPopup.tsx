@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { X, Gift } from "lucide-react";
 import { PhoneInput } from "@/components/ui/phone-input";
-import { useToast } from "@/hooks/use-toast";
-
-const POPUP_STORAGE_KEY = "checklist_popup_dismissed";
-const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
 
 export function ChecklistPopup() {
-  const { toast } = useToast();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -21,21 +18,7 @@ export function ChecklistPopup() {
   });
 
   useEffect(() => {
-    // Check if popup was dismissed recently
-    const dismissedAt = localStorage.getItem(POPUP_STORAGE_KEY);
-    if (dismissedAt) {
-      const dismissedTime = parseInt(dismissedAt, 10);
-      if (Date.now() - dismissedTime < DISMISS_DURATION) {
-        return; // Don't show popup
-      }
-    }
-
-    // Timer trigger: 10 seconds
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 10000);
-
-    // Scroll trigger: 30% or end of page
+    // Scroll trigger: 30% or end of page - always active
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
       const isAtBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 100;
@@ -46,27 +29,15 @@ export function ChecklistPopup() {
       }
     };
 
-    // Exit intent trigger
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) {
-        setIsOpen(true);
-        document.removeEventListener("mouseleave", handleMouseLeave);
-      }
-    };
-
     window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem(POPUP_STORAGE_KEY, Date.now().toString());
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -80,7 +51,7 @@ export function ChecklistPopup() {
         firstName: formData.firstName.trim(),
         lastName: formData.lastName.trim(),
         email: formData.email.trim(),
-        phone: formData.phone, // Already in E.164 format
+        phone: formData.phone,
         timestamp: new Date().toISOString(),
         source: "Free Checklist Popup",
       });
@@ -94,19 +65,12 @@ export function ChecklistPopup() {
         body: formPayload.toString(),
       });
 
-      toast({
-        title: "Success!",
-        description: "Your free checklist is on its way to your inbox!",
-      });
-
-      handleClose();
+      setIsOpen(false);
+      navigate("/submission-thank-you");
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast({
-        title: "Submission Error",
-        description: "There was an issue submitting your request. Please try again.",
-        variant: "destructive",
-      });
+      setIsOpen(false);
+      navigate("/submission-thank-you");
     } finally {
       setIsSubmitting(false);
     }
