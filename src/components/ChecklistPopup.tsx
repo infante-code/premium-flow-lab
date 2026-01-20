@@ -73,7 +73,7 @@ export function ChecklistPopup() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const webhookUrl = "https://services.leadconnectorhq.com/hooks/qhGjNIAUgMNa6ZkPi6pi/webhook-trigger/6bb6d538-fb85-4c6c-84e4-9b05a757fb45";
+    const webhookUrl = "https://services.leadconnectorhq.com/hooks/qhGjNIAUgMNa6ZkPi6pi/webhook-trigger/2ffc9d5f-cc15-4338-b2f3-0d7131db7e5a";
 
     try {
       const formPayload = new URLSearchParams({
