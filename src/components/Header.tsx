@@ -84,9 +84,6 @@ export function Header() {
           <Button variant="outline" size="default" asChild>
             <a href="https://app.premiumflowlab.com/" target="_blank" rel="noopener noreferrer">Portal</a>
           </Button>
-          <Button variant="default" size="default" asChild>
-            <Link to="/contact">Apply Now</Link>
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -131,9 +128,6 @@ export function Header() {
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
               <Button variant="outline" asChild>
                 <a href="https://app.premiumflowlab.com/" target="_blank" rel="noopener noreferrer">Portal</a>
-              </Button>
-              <Button variant="default" asChild>
-                <Link to="/contact">Apply Now</Link>
               </Button>
             </div>
           </nav>
