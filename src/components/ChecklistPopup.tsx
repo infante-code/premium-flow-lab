@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { X, Gift } from "lucide-react";
-import { PhoneInput } from "@/components/ui/phone-input";
-
 export function ChecklistPopup() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -139,12 +137,14 @@ export function ChecklistPopup() {
 
           <div className="space-y-1 sm:space-y-2">
             <Label htmlFor="popupPhone" className="text-sm">Phone *</Label>
-            <PhoneInput
+            <Input
               id="popupPhone"
-              placeholder="Phone number"
+              type="tel"
+              placeholder="(555) 123-4567"
               value={formData.phone}
-              onChange={(phone) => setFormData({ ...formData, phone })}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
+              className="bg-secondary/50 h-10 sm:h-11"
             />
           </div>
 
