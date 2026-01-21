@@ -82,7 +82,7 @@ export function Header() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
           <Button variant="outline" size="default" asChild>
-            <a href="https://app.premiumflowlab.com/" target="_blank" rel="noopener noreferrer">Portal</a>
+            <Link to="/portal">Portal</Link>
           </Button>
         </div>
 
@@ -127,7 +127,7 @@ export function Header() {
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
               <Button variant="outline" asChild>
-                <a href="https://app.premiumflowlab.com/" target="_blank" rel="noopener noreferrer">Portal</a>
+                <Link to="/portal">Portal</Link>
               </Button>
             </div>
           </nav>
