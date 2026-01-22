@@ -7,6 +7,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import AIRedesign from "./pages/AIRedesign";
 import ThankYou from "./pages/ThankYou";
 import SubmissionThankYou from "./pages/SubmissionThankYou";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/ai-redesign" element={<AIRedesign />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/submission-thank-you" element={<SubmissionThankYou />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
