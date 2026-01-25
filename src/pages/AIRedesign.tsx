@@ -10,8 +10,8 @@ import logo from "@/assets/logo.png";
 
 const benefits = [
   { icon: Zap, text: "AI-powered design that converts visitors into customers" },
-  { icon: Clock, text: "Delivered in 48-72 hours, not weeks" },
-  { icon: CheckCircle2, text: "Fully built snapshot ready to deploy" },
+  { icon: Clock, text: "Delivered in 1-2 weeks, not months" },
+  { icon: CheckCircle2, text: "Workflow and Funnel Snapshots ready to deploy" },
   { icon: Sparkles, text: "30-day CRM sub-account included" },
 ];
 
@@ -20,21 +20,21 @@ const testimonials = [
     name: "Marcus Johnson",
     business: "Johnson Real Estate",
     quote: "The AI redesign completely transformed my outdated website. Within a week of launching, I saw a 40% increase in lead inquiries.",
-    website: "johnsonrealestate.com",
+    website: "https://johnsonrealestate.com",
     rating: 5,
   },
   {
     name: "Sarah Chen",
     business: "Wellness Studio Pro",
     quote: "I was skeptical about AI design, but the results speak for themselves. My booking rate doubled and the site looks incredible.",
-    website: "wellnessstudiopro.com",
+    website: "https://wellnessstudiopro.com",
     rating: 5,
   },
   {
     name: "David Martinez",
     business: "Martinez Auto Detailing",
     quote: "Best $250 I've ever spent on my business. The new website pays for itself every week with the extra customers we're getting.",
-    website: "martinezautodetail.com",
+    website: "https://martinezautodetail.com",
     rating: 5,
   },
 ];
@@ -125,7 +125,7 @@ export default function AIRedesign() {
                 </h1>
                 
                 <p className="text-lg text-muted-foreground mb-8 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-                  Get a stunning, conversion-optimized website in 48-72 hours. Our AI technology 
+                  Get a stunning, conversion-optimized website in 1-2 weeks. Our AI technology 
                   analyzes top-performing sites in your industry to create a design that actually converts.
                 </p>
 
@@ -373,9 +373,9 @@ export default function AIRedesign() {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-foreground">48-72 Hour Delivery</h4>
+                      <h4 className="font-semibold text-foreground">1-2 Week Delivery</h4>
                       <p className="text-sm text-muted-foreground">
-                        Get your new website in days, not weeks or months like traditional designers.
+                        Get your new website in weeks, not months like traditional designers.
                       </p>
                     </div>
                   </div>
@@ -401,33 +401,61 @@ export default function AIRedesign() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, i) => (
-                <div key={i} className="card-premium p-8 flex flex-col">
+                <div key={i} className="card-premium p-6 flex flex-col">
+                  {/* Embedded Website Preview */}
+                  <div className="relative mb-6 rounded-lg overflow-hidden border border-border/50 bg-secondary/30">
+                    <div className="aspect-[4/3] w-full">
+                      <iframe
+                        src={testimonial.website}
+                        title={`${testimonial.business} website preview`}
+                        className="w-full h-full pointer-events-auto"
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    </div>
+                    {/* Interactive overlay for mobile - tap to interact */}
+                    <div className="absolute inset-0 bg-transparent hover:bg-black/5 transition-colors cursor-pointer lg:hidden" 
+                         onClick={(e) => {
+                           const iframe = e.currentTarget.previousElementSibling as HTMLIFrameElement;
+                           if (iframe) {
+                             e.currentTarget.style.display = 'none';
+                           }
+                         }}
+                    >
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-black/70 text-white text-xs rounded-full">
+                        Tap to interact
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Stars */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-1 mb-3">
                     {[...Array(testimonial.rating)].map((_, j) => (
-                      <Star key={j} className="w-5 h-5 fill-primary text-primary" />
+                      <Star key={j} className="w-4 h-4 fill-primary text-primary" />
                     ))}
                   </div>
 
                   {/* Quote */}
-                  <blockquote className="text-foreground mb-6 flex-grow">
+                  <blockquote className="text-foreground text-sm mb-4 flex-grow">
                     "{testimonial.quote}"
                   </blockquote>
 
                   {/* Author */}
-                  <div className="border-t border-border pt-4">
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground mb-2">{testimonial.business}</div>
+                  <div className="border-t border-border pt-4 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-foreground text-sm">{testimonial.name}</div>
+                      <div className="text-xs text-muted-foreground">{testimonial.business}</div>
+                    </div>
                     <a 
-                      href={`https://${testimonial.website}`}
+                      href={testimonial.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                      className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
                     >
                       <ExternalLink className="w-3 h-3" />
-                      {testimonial.website}
+                      Visit Site
                     </a>
                   </div>
                 </div>

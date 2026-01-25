@@ -13,7 +13,7 @@ const planDetails = {
     features: [
       "AI Website Redesign",
       "30 Days Free CRM Sub-account",
-      "Fully Built Snapshot",
+      "Workflow and Funnel Snapshots",
       "Free High-Converting Landing Page Checklist",
     ],
   },
