@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const planDetails = {
@@ -16,6 +16,7 @@ const planDetails = {
       "Workflow and Funnel Snapshots",
       "Free High-Converting Landing Page Checklist",
     ],
+    ctaLink: "https://api.leadconnectorhq.com/widget/booking/tjNfGpgbL2FwVdVcN8K0",
   },
   "build-it": {
     name: "Build It",
@@ -33,6 +34,7 @@ const planDetails = {
       "Dedicated CRM Support",
       "Free High-Converting Landing Page Checklist",
     ],
+    ctaLink: "https://api.leadconnectorhq.com/widget/booking/tjNfGpgbL2FwVdVcN8K0",
   },
   "full-lead-gen": {
     name: "Full Lead Generation",
@@ -45,7 +47,13 @@ const planDetails = {
       "Meta Ads Management & Optimization",
       "Everything in Build It",
     ],
+    ctaLink: "https://api.leadconnectorhq.com/widget/booking/tjNfGpgbL2FwVdVcN8K0",
   },
+};
+
+const getUpsellPlans = (selectedPlan: string) => {
+  const allPlans = ["ai-power", "build-it", "full-lead-gen"];
+  return allPlans.filter((plan) => plan !== selectedPlan);
 };
 
 export default function ThankYou() {
@@ -55,6 +63,7 @@ export default function ThankYou() {
   const firstName = searchParams.get("name") || "there";
   
   const plan = planDetails[selectedPlan] || planDetails["build-it"];
+  const upsellPlanKeys = getUpsellPlans(selectedPlan || "build-it");
 
   return (
     <div className="min-h-screen page-background">
@@ -149,16 +158,86 @@ export default function ThankYou() {
                 </ol>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Back to Home */}
-            <div className="text-center mt-8">
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/">
-                  Back to Home
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
+        {/* Upsell Section */}
+        <section className="py-16 section-overlay">
+          <div className="container-wide max-w-5xl">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Sparkles className="w-6 h-6 text-primary" />
+                <span className="text-primary font-semibold">Ready for More?</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Explore Our Other Plans
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Take your marketing to the next level with our other powerful solutions
+              </p>
             </div>
+
+            <div className={`grid gap-6 ${upsellPlanKeys.length === 1 ? 'max-w-md mx-auto' : 'md:grid-cols-2'}`}>
+              {upsellPlanKeys.map((planKey) => {
+                const upsellPlan = planDetails[planKey as keyof typeof planDetails];
+                return (
+                  <div
+                    key={planKey}
+                    className="card-premium p-6 md:p-8 hover:border-primary/50 transition-all duration-300"
+                  >
+                    <div className="text-center mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        {upsellPlan.name}
+                      </h3>
+                      <div className="flex items-baseline justify-center gap-1 mb-2">
+                        <span className="text-3xl font-bold text-foreground">
+                          {upsellPlan.price}
+                        </span>
+                        <span className="text-muted-foreground text-sm">
+                          {upsellPlan.period}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {upsellPlan.description}
+                      </p>
+                    </div>
+
+                    <ul className="space-y-2 mb-6">
+                      {upsellPlan.features.slice(0, 4).map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                      {upsellPlan.features.length > 4 && (
+                        <li className="text-sm text-primary font-medium pl-6">
+                          + {upsellPlan.features.length - 4} more features
+                        </li>
+                      )}
+                    </ul>
+
+                    <Button className="w-full" variant="outline" asChild>
+                      <a href={upsellPlan.ctaLink} target="_blank" rel="noopener noreferrer">
+                        Learn More About {upsellPlan.name}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Back to Home */}
+        <section className="pb-16">
+          <div className="text-center">
+            <Button variant="ghost" size="lg" asChild>
+              <Link to="/">
+                Back to Home
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
           </div>
         </section>
       </main>
