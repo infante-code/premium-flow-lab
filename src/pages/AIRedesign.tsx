@@ -17,24 +17,38 @@ const benefits = [
 
 const testimonials = [
   {
-    name: "Marcus Johnson",
-    business: "Johnson Real Estate",
+    name: "Arbor Estates",
+    business: "Arbor Estates",
     quote: "The AI redesign completely transformed my outdated website. Within a week of launching, I saw a 40% increase in lead inquiries.",
-    website: "https://johnsonrealestate.com",
+    website: "https://sell.arboreestates.com/smart-real-estate-investment",
     rating: 5,
   },
   {
-    name: "Sarah Chen",
-    business: "Wellness Studio Pro",
+    name: "Elite Performer Fitness",
+    business: "Elite Performer Fitness",
     quote: "I was skeptical about AI design, but the results speak for themselves. My booking rate doubled and the site looks incredible.",
-    website: "https://wellnessstudiopro.com",
+    website: "https://www.eliteperformerfitness.com/",
     rating: 5,
   },
   {
-    name: "David Martinez",
-    business: "Martinez Auto Detailing",
-    quote: "Best $250 I've ever spent on my business. The new website pays for itself every week with the extra customers we're getting.",
-    website: "https://martinezautodetail.com",
+    name: "RingFree",
+    business: "RingFree",
+    quote: "Best investment I've ever made for my business. The new website pays for itself every week with the extra customers we're getting.",
+    website: "https://try.ringfree.com/lander",
+    rating: 5,
+  },
+  {
+    name: "Hometown Pet Care Center",
+    business: "Hometown Pet Care Center",
+    quote: "Our new website has been a game-changer. Customer inquiries have increased significantly since the redesign.",
+    website: "https://hometownpetcarecenter.net/",
+    rating: 5,
+  },
+  {
+    name: "Monetize Your Day",
+    business: "Monetize Your Day",
+    quote: "The AI-powered design perfectly captured our brand. We're seeing more engagement and conversions than ever before.",
+    website: "https://www.monetizeyourday.com/",
     rating: 5,
   },
 ];
