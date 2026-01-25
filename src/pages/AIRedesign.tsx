@@ -45,10 +45,10 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Monetize Your Day",
-    business: "Monetize Your Day",
+    name: "Eagles Automations",
+    business: "Eagles Automations",
     quote: "The AI-powered design perfectly captured our brand. We're seeing more engagement and conversions than ever before.",
-    website: "https://www.monetizeyourday.com/",
+    website: "https://www.eaglesautomations.com/",
     rating: 5,
   },
 ];
