@@ -31,10 +31,10 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "RingFree",
-    business: "RingFree",
+    name: "Far Beyond Gifted",
+    business: "Far Beyond Gifted",
     quote: "Best investment I've ever made for my business. The new website pays for itself every week with the extra customers we're getting.",
-    website: "https://try.ringfree.com/lander",
+    website: "https://www.farbeyondgifted.com/",
     rating: 5,
   },
   {
@@ -45,10 +45,17 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Eagles Automations",
-    business: "Eagles Automations",
+    name: "Built By Becker Media",
+    business: "Built By Becker Media",
     quote: "The AI-powered design perfectly captured our brand. We're seeing more engagement and conversions than ever before.",
-    website: "https://www.eaglesautomations.com/",
+    website: "https://www.builtbybeckermedia.com/",
+    rating: 5,
+  },
+  {
+    name: "EMV Performance",
+    business: "EMV Performance",
+    quote: "Outstanding results from our new AI-designed website. The modern look has significantly boosted our online presence.",
+    website: "https://www.emvperformance.com/",
     rating: 5,
   },
 ];
