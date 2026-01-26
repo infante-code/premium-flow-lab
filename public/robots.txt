@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://premium-flow-lab.lovable.app/sitemap.xml
+Sitemap: https://mdfs.online/sitemap.xml
