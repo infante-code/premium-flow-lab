@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Zap, ChevronDown, ChevronUp } from "lucide-react";
-import { Link } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -127,19 +126,14 @@ export function CTASection() {
               </p>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <div className="text-center">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+              <div className="mb-6">
                 <Button variant="hero" size="xl" className="group" asChild>
                   <a href="https://www.gohighlevel.com/?fp_ref=mdf" target="_blank" rel="noopener noreferrer">
                     Start Your 14-Day Free Trial
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
-                </Button>
-                <Button variant="outline" size="xl" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-                  <Link to="/contact">
-                    Talk to Our Team
-                  </Link>
                 </Button>
               </div>
 
