@@ -1,6 +1,8 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
+import { CTASection } from "@/components/CTASection";
+import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
+import { ProblemSolutionSection } from "@/components/ProblemSolutionSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -302,7 +304,9 @@ export default function Contact() {
           </div>
         </section>
 
-        <GoHighLevelAffiliate />
+        <ProblemSolutionSection />
+        <WebsiteTestimonials />
+        <CTASection />
       </main>
 
       <Footer />

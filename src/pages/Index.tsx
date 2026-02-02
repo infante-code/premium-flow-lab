@@ -9,6 +9,7 @@ const ProblemSolutionSection = lazy(() => import("@/components/ProblemSolutionSe
 const ServicesSection = lazy(() => import("@/components/ServicesSection").then(m => ({ default: m.ServicesSection })));
 const PricingSection = lazy(() => import("@/components/PricingSection").then(m => ({ default: m.PricingSection })));
 const FAQSection = lazy(() => import("@/components/FAQSection").then(m => ({ default: m.FAQSection })));
+const WebsiteTestimonials = lazy(() => import("@/components/WebsiteTestimonials").then(m => ({ default: m.WebsiteTestimonials })));
 const GoHighLevelAffiliate = lazy(() => import("@/components/GoHighLevelAffiliate").then(m => ({ default: m.GoHighLevelAffiliate })));
 const CTASection = lazy(() => import("@/components/CTASection").then(m => ({ default: m.CTASection })));
 
@@ -36,6 +37,9 @@ const Index = () => {
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <FAQSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <WebsiteTestimonials />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <GoHighLevelAffiliate />

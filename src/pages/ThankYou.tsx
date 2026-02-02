@@ -1,5 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CTASection } from "@/components/CTASection";
+import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -228,6 +230,9 @@ export default function ThankYou() {
             </div>
           </div>
         </section>
+
+        <WebsiteTestimonials />
+        <CTASection />
 
         {/* Back to Home */}
         <section className="pb-16">

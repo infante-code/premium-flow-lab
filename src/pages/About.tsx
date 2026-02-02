@@ -1,9 +1,9 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
-import { Button } from "@/components/ui/button";
-import { Users, Target, Award, TrendingUp, CheckCircle2, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CTASection } from "@/components/CTASection";
+import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
+import { Users, Target, Award, TrendingUp, CheckCircle2 } from "lucide-react";
 
 const values = [
   {
@@ -173,27 +173,9 @@ export default function About() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 section-overlay">
-          <div className="container-wide">
-            <div className="card-premium p-8 md:p-16 text-center bg-gradient-to-r from-primary/10 via-transparent to-primary/10">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Ready to Work Together?
-              </h2>
-              <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Let's discuss how we can help your business achieve predictable growth with our proven marketing systems.
-              </p>
-              <Button variant="cta" size="lg" className="group" asChild>
-                <Link to="/contact">
-                  Get in Touch
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-            </Button>
-            </div>
-          </div>
-        </section>
-
+        <WebsiteTestimonials />
         <GoHighLevelAffiliate />
+        <CTASection />
       </main>
 
       <Footer />
