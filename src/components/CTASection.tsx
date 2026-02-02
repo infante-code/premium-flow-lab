@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Zap } from "lucide-react";
+import { ArrowRight, Check, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Table,
@@ -9,6 +10,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const ghlFeatures = [
   { feature: "CRM & Pipeline Management", otherToolsCost: "$99/monthly" },
@@ -22,9 +28,15 @@ const ghlFeatures = [
   { feature: "Courses/Products", otherToolsCost: "$99/monthly" },
   { feature: "Call Tracking", otherToolsCost: "$49/monthly" },
   { feature: "Reputation Management", otherToolsCost: "$159/monthly" },
+  { feature: "Tracking & Analytics", otherToolsCost: "$299/monthly" },
+  { feature: "Communities", otherToolsCost: "$89/monthly" },
+  { feature: "Document Signing", otherToolsCost: "$47/monthly" },
+  { feature: "White-Labeled Mobile App", otherToolsCost: "Unique to HighLevel" },
 ];
 
 export function CTASection() {
+  const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <section className="py-24 section-overlay">
       <div className="container-wide">
@@ -51,51 +63,67 @@ export function CTASection() {
               </p>
             </div>
 
-            {/* Comparison Table */}
+            {/* Comparison Table - Collapsible */}
             <div className="max-w-3xl mx-auto mb-12">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 overflow-hidden">
-                <Table>
-                  <TableHeader>
-                    <TableRow className="border-white/20 hover:bg-transparent">
-                      <TableHead className="text-primary-foreground font-bold text-sm uppercase tracking-wider py-4">
-                        Features
-                      </TableHead>
-                      <TableHead className="text-primary-foreground font-bold text-sm uppercase tracking-wider text-center py-4">
-                        Other Tools
-                      </TableHead>
-                      <TableHead className="text-primary-foreground font-bold text-sm uppercase tracking-wider text-center py-4">
-                        <span className="inline-flex items-center gap-1">
-                          <span className="text-yellow-300">✦</span> Included
-                        </span>
-                      </TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {ghlFeatures.map((item, index) => (
-                      <TableRow 
-                        key={index} 
-                        className="border-white/10 hover:bg-white/5"
-                      >
-                        <TableCell className="text-primary-foreground/90 font-medium py-3">
-                          {item.feature}
-                        </TableCell>
-                        <TableCell className="text-primary-foreground/60 text-center py-3">
-                          {item.otherToolsCost}
-                        </TableCell>
-                        <TableCell className="text-center py-3">
-                          <div className="flex justify-center">
-                            <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
-                              <Check className="w-4 h-4 text-white" />
-                            </div>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
+              <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+                <CollapsibleTrigger asChild>
+                  <button className="w-full bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-between hover:bg-white/15 transition-colors">
+                    <span className="text-primary-foreground font-semibold text-lg">
+                      View All Features Included ({ghlFeatures.length}+)
+                    </span>
+                    {isOpen ? (
+                      <ChevronUp className="w-6 h-6 text-primary-foreground" />
+                    ) : (
+                      <ChevronDown className="w-6 h-6 text-primary-foreground" />
+                    )}
+                  </button>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-2">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 overflow-hidden">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="border-white/20 hover:bg-transparent">
+                          <TableHead className="text-primary-foreground font-bold text-sm uppercase tracking-wider py-4">
+                            Features
+                          </TableHead>
+                          <TableHead className="text-primary-foreground font-bold text-sm uppercase tracking-wider text-center py-4">
+                            Other Tools
+                          </TableHead>
+                          <TableHead className="text-primary-foreground font-bold text-sm uppercase tracking-wider text-center py-4">
+                            <span className="inline-flex items-center gap-1">
+                              <span className="text-yellow-300">✦</span> Included
+                            </span>
+                          </TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {ghlFeatures.map((item, index) => (
+                          <TableRow 
+                            key={index} 
+                            className="border-white/10 hover:bg-white/5"
+                          >
+                            <TableCell className="text-primary-foreground/90 font-medium py-3">
+                              {item.feature}
+                            </TableCell>
+                            <TableCell className="text-primary-foreground/60 text-center py-3">
+                              {item.otherToolsCost}
+                            </TableCell>
+                            <TableCell className="text-center py-3">
+                              <div className="flex justify-center">
+                                <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+                                  <Check className="w-4 h-4 text-white" />
+                                </div>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
               <p className="text-center text-primary-foreground/60 text-sm mt-4">
-                Total savings: <span className="text-primary-foreground font-semibold">$1,177+/month</span> compared to using separate tools
+                Total savings: <span className="text-primary-foreground font-semibold">$1,612+/month</span> compared to using separate tools
               </p>
             </div>
 
@@ -116,7 +144,7 @@ export function CTASection() {
               </div>
 
               <p className="text-primary-foreground/60 text-sm">
-                No credit card required • Cancel anytime • Full platform access
+                Cancel anytime • Full platform access
               </p>
             </div>
           </div>
