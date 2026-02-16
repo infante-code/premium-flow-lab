@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const plans = [
   {
     name: "AI Power",
-    price: "$250",
+    price: "$300",
     period: "one-time",
     description: "Perfect for getting started with AI-powered marketing",
     features: [
