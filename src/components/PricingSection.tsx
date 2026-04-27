@@ -6,7 +6,7 @@ import { useState } from "react";
 const plans = [
   {
     name: "Build It",
-    price: "$1,299",
+    price: "$2,500",
     period: "/month",
     description: "We build and automate your revenue infrastructure.",
     subtitle: "For businesses ready to operate with structure, automation, and scalable systems.",
