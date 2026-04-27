@@ -70,21 +70,6 @@ const plans = [
     ctaLink: "/contact",
     popular: true,
   },
-  {
-    name: "Full Lead Generation",
-    price: "$3,000",
-    period: "/month",
-    description: "Complete done-for-you marketing solution",
-    features: [
-      "AI Website Redesign",
-      "Running Meta Ads (Instant Forms or Funnel)",
-      "Meta Ads Management & Optimization",
-      "Everything in Build It",
-    ],
-    cta: "Apply to Work with Us",
-    ctaLink: "/contact",
-    popular: false,
-  },
 ];
 
 function ExpandableSection({ title, items, isPopular }: { title: string; items: string[]; isPopular: boolean }) {
