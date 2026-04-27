@@ -38,19 +38,6 @@ const planDetails = {
     ],
     ctaLink: "https://api.leadconnectorhq.com/widget/booking/tjNfGpgbL2FwVdVcN8K0",
   },
-  "full-lead-gen": {
-    name: "Full Lead Generation",
-    price: "$3,000",
-    period: "/month",
-    description: "Complete done-for-you marketing solution",
-    features: [
-      "AI Website Redesign",
-      "Running Meta Ads (Instant Forms or Funnel)",
-      "Meta Ads Management & Optimization",
-      "Everything in Build It",
-    ],
-    ctaLink: "https://api.leadconnectorhq.com/widget/booking/tjNfGpgbL2FwVdVcN8K0",
-  },
 };
 
 const getUpsellPlans = (selectedPlan: string) => {
