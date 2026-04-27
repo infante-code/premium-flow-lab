@@ -180,24 +180,6 @@ export function PricingSection() {
                 </>
               )}
 
-              {/* Simple Features (for Full Lead Generation) */}
-              {('features' in plan) && (
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <span className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        plan.popular ? "bg-primary/20" : "bg-secondary"
-                      }`}>
-                        <Check className={`w-3 h-3 ${plan.popular ? "text-primary" : "text-muted-foreground"}`} />
-                      </span>
-                      <span className={`text-sm ${feature.startsWith("(") ? "text-muted-foreground italic" : "text-foreground"}`}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
               {/* CTA */}
               <Button
                 variant={plan.popular ? "cta" : "outline"}
