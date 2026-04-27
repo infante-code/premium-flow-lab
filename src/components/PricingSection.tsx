@@ -124,7 +124,7 @@ export function PricingSection() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid gap-8 max-w-2xl mx-auto">
           {plans.map((plan, i) => (
             <div
               key={i}
