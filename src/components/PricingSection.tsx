@@ -6,7 +6,7 @@ import { useState } from "react";
 const plans = [
   {
     name: "Build It",
-    price: "$1,299",
+    price: "$2,500",
     period: "/month",
     description: "We build and automate your revenue infrastructure.",
     subtitle: "For businesses ready to operate with structure, automation, and scalable systems.",
@@ -70,21 +70,6 @@ const plans = [
     ctaLink: "/contact",
     popular: true,
   },
-  {
-    name: "Full Lead Generation",
-    price: "$3,000",
-    period: "/month",
-    description: "Complete done-for-you marketing solution",
-    features: [
-      "AI Website Redesign",
-      "Running Meta Ads (Instant Forms or Funnel)",
-      "Meta Ads Management & Optimization",
-      "Everything in Build It",
-    ],
-    cta: "Apply to Work with Us",
-    ctaLink: "/contact",
-    popular: false,
-  },
 ];
 
 function ExpandableSection({ title, items, isPopular }: { title: string; items: string[]; isPopular: boolean }) {
@@ -139,7 +124,7 @@ export function PricingSection() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid gap-8 max-w-2xl mx-auto">
           {plans.map((plan, i) => (
             <div
               key={i}
@@ -193,24 +178,6 @@ export function PricingSection() {
                     ))}
                   </div>
                 </>
-              )}
-
-              {/* Simple Features (for Full Lead Generation) */}
-              {('features' in plan) && (
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <span className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        plan.popular ? "bg-primary/20" : "bg-secondary"
-                      }`}>
-                        <Check className={`w-3 h-3 ${plan.popular ? "text-primary" : "text-muted-foreground"}`} />
-                      </span>
-                      <span className={`text-sm ${feature.startsWith("(") ? "text-muted-foreground italic" : "text-foreground"}`}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               )}
 
               {/* CTA */}
