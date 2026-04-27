@@ -22,7 +22,7 @@ const planDetails = {
   },
   "build-it": {
     name: "Build It",
-    price: "$1,299",
+    price: "$2,500",
     period: "/month",
     description: "Our most popular plan for serious growth",
     features: [
@@ -54,7 +54,7 @@ const planDetails = {
 };
 
 const getUpsellPlans = (selectedPlan: string) => {
-  const allPlans = ["ai-power", "build-it", "full-lead-gen"];
+  const allPlans = ["ai-power", "build-it"];
   return allPlans.filter((plan) => plan !== selectedPlan);
 };
 

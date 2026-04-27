@@ -25,7 +25,7 @@ const plans = [
   {
     key: "build-it",
     name: "Build It",
-    price: "$1,299",
+    price: "$2,500",
     period: "/month",
     description: "Our most popular plan for serious growth",
     popular: true,

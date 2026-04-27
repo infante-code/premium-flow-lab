@@ -244,8 +244,7 @@ export default function Contact() {
                       <div className="space-y-3">
                         {[
                           { value: "ai-power", label: "AI Power ($250 one-time)" },
-                          { value: "build-it", label: "Build It ($1,299/month) - Most Popular" },
-                          { value: "full-lead-gen", label: "Full Lead Generation ($3,000/month)" },
+                          { value: "build-it", label: "Build It ($2,500/month) - Most Popular" },
                         ].map((option) => (
                           <label key={option.value} className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border border-border hover:border-primary/50 transition-colors">
                             <input
