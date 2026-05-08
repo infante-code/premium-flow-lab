@@ -3,10 +3,27 @@ import { Check, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+const currencies = [
+  { code: "USD", label: "🇺🇸 USD", symbol: "$", rate: 1, custom: null as number | null },
+  { code: "PHP", label: "🇵🇭 PHP", symbol: "₱", rate: 0, custom: 15000 },
+  { code: "EUR", label: "🇪🇺 EUR", symbol: "€", rate: 0.92, custom: null },
+  { code: "GBP", label: "🇬🇧 GBP", symbol: "£", rate: 0.79, custom: null },
+  { code: "CAD", label: "🇨🇦 CAD", symbol: "C$", rate: 1.37, custom: null },
+  { code: "AUD", label: "🇦🇺 AUD", symbol: "A$", rate: 1.52, custom: null },
+  { code: "INR", label: "🇮🇳 INR", symbol: "₹", rate: 83, custom: null },
+  { code: "AED", label: "🇦🇪 AED", symbol: "د.إ", rate: 3.67, custom: null },
+];
+
+const BASE_PRICE_USD = 2500;
+
+function formatPrice(currency: typeof currencies[number]) {
+  const value = currency.custom ?? Math.round(BASE_PRICE_USD * currency.rate);
+  return `${currency.symbol}${value.toLocaleString()}`;
+}
+
 const plans = [
   {
     name: "Build It",
-    price: "$2,500",
     period: "/month",
     description: "We build and automate your revenue infrastructure.",
     subtitle: "For businesses ready to operate with structure, automation, and scalable systems.",
