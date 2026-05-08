@@ -3,10 +3,27 @@ import { Check, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+const currencies = [
+  { code: "USD", label: "🇺🇸 USD", symbol: "$", rate: 1, custom: null as number | null },
+  { code: "PHP", label: "🇵🇭 PHP", symbol: "₱", rate: 0, custom: 15000 },
+  { code: "EUR", label: "🇪🇺 EUR", symbol: "€", rate: 0.92, custom: null },
+  { code: "GBP", label: "🇬🇧 GBP", symbol: "£", rate: 0.79, custom: null },
+  { code: "CAD", label: "🇨🇦 CAD", symbol: "C$", rate: 1.37, custom: null },
+  { code: "AUD", label: "🇦🇺 AUD", symbol: "A$", rate: 1.52, custom: null },
+  { code: "INR", label: "🇮🇳 INR", symbol: "₹", rate: 83, custom: null },
+  { code: "AED", label: "🇦🇪 AED", symbol: "د.إ", rate: 3.67, custom: null },
+];
+
+const BASE_PRICE_USD = 2500;
+
+function formatPrice(currency: typeof currencies[number]) {
+  const value = currency.custom ?? Math.round(BASE_PRICE_USD * currency.rate);
+  return `${currency.symbol}${value.toLocaleString()}`;
+}
+
 const plans = [
   {
     name: "Build It",
-    price: "$2,500",
     period: "/month",
     description: "We build and automate your revenue infrastructure.",
     subtitle: "For businesses ready to operate with structure, automation, and scalable systems.",
@@ -107,6 +124,8 @@ function ExpandableSection({ title, items, isPopular }: { title: string; items: 
 }
 
 export function PricingSection() {
+  const [currency, setCurrency] = useState(currencies[0]);
+
   return (
     <section id="pricing" className="py-24 section-overlay">
       <div className="container-wide">
@@ -118,9 +137,26 @@ export function PricingSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             Pricing Plans
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Choose the perfect plan to scale your business with our proven marketing systems
           </p>
+
+          {/* Currency Switcher */}
+          <div className="inline-flex flex-wrap justify-center gap-2 p-2 rounded-2xl bg-card/60 backdrop-blur-xl border border-border/50">
+            {currencies.map((c) => (
+              <button
+                key={c.code}
+                onClick={() => setCurrency(c)}
+                className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
+                  currency.code === c.code
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Pricing Cards */}
@@ -147,7 +183,7 @@ export function PricingSection() {
               <div className="text-center mb-8 pt-4">
                 <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1 mb-2">
-                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+                  <span className="text-4xl font-bold text-foreground">{formatPrice(currency)}</span>
                   <span className="text-muted-foreground">{plan.period}</span>
                 </div>
                 <p className="text-sm text-foreground font-medium">{plan.description}</p>
