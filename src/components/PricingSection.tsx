@@ -18,7 +18,7 @@ function formatPrice(currency: typeof currencies[number]) {
 const plans = [
   {
     name: "Build It",
-    period: "/month",
+    period: "/90 days",
     description: "We build and automate your revenue infrastructure.",
     subtitle: "For businesses ready to operate with structure, automation, and scalable systems.",
     expandableSections: [
