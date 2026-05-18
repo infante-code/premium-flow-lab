@@ -138,13 +138,10 @@ export function PricingSection() {
           {/* Country Selection */}
           {!selectedCurrency ? (
             <div className="max-w-3xl mx-auto">
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <Globe className="w-5 h-5 text-primary" />
-                <h3 className="text-xl font-semibold text-foreground">Select Your Country</h3>
-              </div>
-              <p className="text-sm text-muted-foreground mb-6">
-                Please select your country to see pricing in your local currency
-              </p>
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  <Globe className="w-5 h-5 text-primary" />
+                  <h3 className="text-xl font-semibold text-foreground">Countries We Are Serving</h3>
+                </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {currencies.map((c) => (
                   <button
