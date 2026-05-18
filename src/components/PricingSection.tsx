@@ -5,13 +5,7 @@ import { useState } from "react";
 
 const currencies = [
   { code: "USD", label: "🇺🇸 United States", symbol: "$", rate: 1, custom: null as number | null },
-  { code: "PHP", label: "🇵🇭 Philippines", symbol: "₱", rate: 0, custom: 15000 },
-  { code: "EUR", label: "🇪🇺 Europe", symbol: "€", rate: 0.92, custom: null },
-  { code: "GBP", label: "🇬🇧 United Kingdom", symbol: "£", rate: 0.79, custom: null },
-  { code: "CAD", label: "🇨🇦 Canada", symbol: "C$", rate: 1.37, custom: null },
-  { code: "AUD", label: "🇦🇺 Australia", symbol: "A$", rate: 1.52, custom: null },
-  { code: "INR", label: "🇮🇳 India", symbol: "₹", rate: 83, custom: null },
-  { code: "AED", label: "🇦🇪 UAE", symbol: "د.إ", rate: 3.67, custom: null },
+  { code: "PHP", label: "🇵🇭 Philippines", symbol: "₱", rate: 0, custom: 75000 },
 ];
 
 const BASE_PRICE_USD = 2500;
@@ -24,7 +18,7 @@ function formatPrice(currency: typeof currencies[number]) {
 const plans = [
   {
     name: "Build It",
-    period: "/month",
+    period: "/90 days",
     description: "We build and automate your revenue infrastructure.",
     subtitle: "For businesses ready to operate with structure, automation, and scalable systems.",
     expandableSections: [
