@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
-import { CTASection } from "@/components/CTASection";
 import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
 
 export default function PrivacyPolicy() {
@@ -108,7 +107,6 @@ export default function PrivacyPolicy() {
 
         <WebsiteTestimonials />
         <GoHighLevelAffiliate />
-        <CTASection />
       </main>
 
       <Footer />

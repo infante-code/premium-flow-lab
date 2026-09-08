@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CTASection } from "@/components/CTASection";
+
 import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
 import { ProblemSolutionSection } from "@/components/ProblemSolutionSection";
 import { Button } from "@/components/ui/button";
@@ -305,7 +305,6 @@ export default function Contact() {
 
         <ProblemSolutionSection />
         <WebsiteTestimonials />
-        <CTASection />
       </main>
 
       <Footer />

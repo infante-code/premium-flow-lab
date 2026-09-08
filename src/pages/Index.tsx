@@ -11,7 +11,6 @@ const PricingSection = lazy(() => import("@/components/PricingSection").then(m =
 const FAQSection = lazy(() => import("@/components/FAQSection").then(m => ({ default: m.FAQSection })));
 const WebsiteTestimonials = lazy(() => import("@/components/WebsiteTestimonials").then(m => ({ default: m.WebsiteTestimonials })));
 const GoHighLevelAffiliate = lazy(() => import("@/components/GoHighLevelAffiliate").then(m => ({ default: m.GoHighLevelAffiliate })));
-const CTASection = lazy(() => import("@/components/CTASection").then(m => ({ default: m.CTASection })));
 
 // Minimal loading placeholder
 const SectionLoader = () => (
@@ -43,9 +42,6 @@ const Index = () => {
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <GoHighLevelAffiliate />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <CTASection />
         </Suspense>
       </main>
       <Footer />

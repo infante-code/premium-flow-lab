@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GoHighLevelAffiliate } from "@/components/GoHighLevelAffiliate";
-import { CTASection } from "@/components/CTASection";
 import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
 import { Users, Target, Award, TrendingUp, CheckCircle2 } from "lucide-react";
 
@@ -175,7 +174,6 @@ export default function About() {
 
         <WebsiteTestimonials />
         <GoHighLevelAffiliate />
-        <CTASection />
       </main>
 
       <Footer />

@@ -4,7 +4,7 @@ import { CheckCircle, Check, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CTASection } from "@/components/CTASection";
+
 import { WebsiteTestimonials } from "@/components/WebsiteTestimonials";
 
 const plans = [
@@ -186,7 +186,6 @@ export default function SubmissionThankYou() {
         </section>
 
         <WebsiteTestimonials />
-        <CTASection />
       </main>
 
       <Footer />
