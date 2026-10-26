@@ -63,7 +63,8 @@ export default function Launch() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
+      <LaunchFooter />
     </div>
   );
 }
