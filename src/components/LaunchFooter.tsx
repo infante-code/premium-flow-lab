@@ -7,14 +7,6 @@ export function LaunchFooter() {
         <div className="flex items-center gap-3">
           <img src={logo} alt="MDF Agency" className="h-8 w-auto" />
         </div>
-        <div className="text-sm text-muted-foreground">
-          <a
-            href="mailto:multipledesignpromotions@gmail.com"
-            className="hover:text-primary transition-colors"
-          >
-            multipledesignpromotions@gmail.com
-          </a>
-        </div>
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} MDF Agency. All rights reserved.
         </p>
