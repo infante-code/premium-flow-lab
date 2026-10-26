@@ -1,6 +1,7 @@
-import { Play } from "lucide-react";
+import { Play, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { LaunchHeader } from "@/components/LaunchHeader";
+import { LaunchFooter } from "@/components/LaunchFooter";
 
 // Paste your Wistia video ID here (the long string in your Wistia embed URL,
 // e.g. "https://fast.wistia.net/embed/iframe/abc123def" -> "abc123def").
