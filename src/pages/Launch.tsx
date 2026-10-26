@@ -10,9 +10,10 @@ const WISTIA_VIDEO_ID = "";
 
 export default function Launch() {
   return (
-    <div className="page-background min-h-screen">
-      <div className="section-overlay relative z-10 min-h-screen flex items-center justify-center">
-        <div className="container-wide py-16">
+    <div className="page-background min-h-screen flex flex-col">
+      <LaunchHeader />
+      <main className="flex-1 flex items-center justify-center pt-28 pb-16">
+        <div className="container-wide">
           <div className="max-w-4xl mx-auto text-center">
             {/* Launch badge */}
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 text-primary text-sm font-semibold mb-8 animate-fade-in-up">
